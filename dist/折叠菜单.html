@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>折叠菜单</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        .collapse .collapse_text{
+            color: #FFFFFF;
+            background-color: #6b568f;
+            cursor: default;
+        }
+        .collapse .collapse .collapse_text{
+            background-color: #35818f;
+        }
+        .collapse .collapse .collapse .collapse_text{
+            background-color: #8f4f30;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list" class="collapse">
+        <li>
+            <div class="collapse_text">一级菜单A</div>
+            <ul class="collapse">
+                <li>
+                    <div class="collapse_text">二级菜单A-A</div>
+                    <ul class="collapse">
+                        <li><div class="collapse_text">二级菜单A-A-A</div></li>
+                        <li><div class="collapse_text">二级菜单A-A-B</div></li>
+                        <li><div class="collapse_text">二级菜单A-A-C</div></li>
+                        <li><div class="collapse_text">二级菜单A-A-D</div></li>
+                    </ul>
+                </li>
+                <li><div class="collapse_text">二级菜单A-B</div></li>
+                <li><div class="collapse_text">二级菜单A-C</div></li>
+            </ul>
+        </li>
+        <li>
+            <div class="collapse_text">一级菜单B</div>
+            <ul class="collapse">
+                <li><div class="collapse_text">二级菜单B-A</div></li>
+                <li><div class="collapse_text">二级菜单B-B</div></li>
+                <li><div class="collapse_text">二级菜单B-C</div></li>
+            </ul>
+        </li>
+        <li>
+            <div class="collapse_text">一级菜单C</div>
+            <ul class="collapse">
+                <li><div class="collapse_text">二级菜单C-A</div></li>
+                <li><div class="collapse_text">二级菜单C-B</div></li>
+                <li><div class="collapse_text">二级菜单C-C</div></li>
+                <li><div class="collapse_text">二级菜单C-D</div></li>
+                <li><div class="collapse_text">二级菜单C-F</div></li>
+                <li><div class="collapse_text">二级菜单C-G</div></li>
+            </ul>
+        </li>
+        <li>
+            <div class="collapse_text">一级菜单D</div>
+        </li>
+    </ul>
+
+    <script>
+        SM.collapse({
+            id: 'list',
+            time: 500       //展开所花的时间。默认为0
+        })
+    </script>
+</body>
+</html>

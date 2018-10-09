@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <div id="carouselOut" style="width:300px; height:300px;margin: 0 auto; border: 1px solid black;"></div>
+
+    <script>
+        SM.monitor({
+            id:'carouselOut',       //监听的目标
+            event: 'wheel',         //监听的方式：wheel滚轮，mouse鼠标，touch手势
+            moved:30,               //移动的距离限制，默认为0
+            end: function (data) {  //监听的方法：end：监听结束时的方法，start：监听开始时的方法，move：监听过程时的方法
+                alert(data.isDown)
+            }
+        });
+    </script>
+
+</body>
+</html>

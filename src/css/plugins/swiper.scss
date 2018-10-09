@@ -1,0 +1,71 @@
+/*------------------------------------- swiper  ----------------------------------------*/
+.sm_swiper{
+    width: 300px;
+    height: 150px;
+}
+.sm_swiper .swiper_content{
+    width: 100%;
+    height: 120px;
+    position: relative;
+}
+.sm_swiper .swiper_content .swiper_out{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.sm_swiper .swiper_content .swiper_out .swiper_in{
+    height: 100%;
+}
+.sm_swiper .swiper_content .swiper_out .swiper_in .swiper_slide{
+    width: 90px;
+    height: 100%;
+    float: left;
+}
+.sm_swiper .swiper_content .swiper_out .swiper_in .swiper_slide:first-child{
+    margin-left: 0;
+}
+.sm_swiper .swiper_content .swiper_prev,
+.sm_swiper .swiper_content .swiper_next{
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+}
+.sm_swiper .swiper_content .swiper_prev{
+    left: -30px;
+}
+.sm_swiper .swiper_content .swiper_next{
+    right: -30px;
+}
+.sm_swiper .swiper_content .swiper_prev i.icon,
+.sm_swiper .swiper_content .swiper_next i.icon{
+    color: #a28dfe;
+}
+.sm_swiper .swiper_paging{
+    width: 100%;
+    height: 30px;
+    position: relative;
+}
+.sm_swiper .swiper_paging .swiper_paging_in{
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+.sm_swiper .swiper_paging .swiper_paging_in .swiper_paging_bar{
+    width: 10px;
+    height: 10px;
+    background-color: #d5cfec;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    display: inline-block;
+}
+.sm_swiper .swiper_paging .swiper_paging_in .swiper_paging_bar.active{
+    background-color: #a28dfe;
+}

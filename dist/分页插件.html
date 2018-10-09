@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+
+    <!-- default：指定default分页样式 -->
+    <div id="paging" class="paging default"></div>
+
+    <script>
+        SM.paging({
+            id: 'paging',
+            page: {                     //指定分页参数
+                pageIndex: 1,           //指定当前页码，（默认为1）
+                pageSize: 10,           //指定每页显示的最大数据
+                pageTotal:333,         //可以事先指定最大数据数量，也可以在第一次请求成功后指定
+            },
+            request :function (date) {            //请求的方法
+                console.log('请求第'+date.pageIndex+"页----"+date.options.userId);
+                if(date.isFirst) date.init(333);    //这里指定获取的总数总数
+
+                setTimeout(function () {
+                    date.callback();
+                    console.log('第'+date.pageIndex+'页请求完成')
+
+                },500)                  //页面数据渲染完毕后，调用此方法
+            },
+            pageBtnNum: 11,              //设置按钮最大显示数量（默认为7）
+            options:{}                  //该参数为可选，每次请求时，将会返回该参数对象
+        });
+        //----------------------------模拟重建----------------------------------------------
+        setTimeout(function () {
+            SM.paging({
+                id: 'paging',
+                page: {                     //指定分页参数
+                    pageIndex: 4,           //指定当前页码，（默认为1）
+                    pageSize: 16,           //指定每页显示的最大数据
+                },
+                request :function (date) {            //请求的方法
+                    console.log('请求第'+date.pageIndex+"页----"+date.options.userId);
+                    if(date.isFirst) date.init(140);    //这里指定获取的总数总数
+                    setTimeout(function () {
+                        date.callback();
+                        console.log('第'+date.pageIndex+'页请求完成')
+                    },500)                  //页面数据渲染完毕后，调用此方法
+                },
+                options:{ userId: 11 }      //该参数为可选，每次请求时，将会返回该参数对象
+            });
+        }, 10000)
+    </script>
+</body>
+</html>

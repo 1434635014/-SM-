@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+
+    <script>
+        SM.ajax({
+            type:'post',
+            url:'http://localhost:3000/username?id=313',
+            dataType: "json",
+            beforeSend:function(){
+                alert('beforeSend')
+            },
+            success:function (data) {
+                alert(data)
+            },
+            error:function (error) {
+                alert(error.status)
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        input{
+            width: 400px;
+            height: 30px;
+            border: 1px solid #00a1a5;
+            font-size: 16px;
+        }
+        textarea{
+            width: 400px;
+            height: 150px;
+            border: 1px solid #00a1a5;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" value="其二1 414" id="input"> <span id="length">0</span>/10<br>
+    <textarea id="textarea"></textarea> <span id="tLength">0</span>/30
+    <script>
+        /*---------------------------------------设置input和textarea输入的最大字节数------------------------------------------*/
+        SM.inputSize({
+            id: 'input',            //文本框id
+            size:10,                //输入的最大字数：按一个英文、数字或空格等于半个字数来算
+            callback:function (length) {        //指定回调，获取输入后的长度
+                SM('#length').text(length);
+            }
+        });
+        SM.inputSize({
+            id: 'textarea',
+            size: 30,
+            showId:'tLength'        //可以指定showId直接在需要显示长度的地方进行更新
+        });
+    </script>
+</body>
+</html>

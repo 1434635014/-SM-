@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗插件</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        button.btn_1{
+            width: auto !important;
+            padding: 0  5px 0 5px;
+            margin-top: 5px;
+        }
+        #loadingFinish{
+            position: absolute;
+            z-index: 100115;
+        }
+    </style>
+</head>
+<body>
+    <button id="confirmDefault" class="btn btn_success btn_1">询问弹窗（普通）</button>
+    <button id="confirmModal" class="btn btn_success btn_1">询问弹窗（模态）</button>
+    <button id="alertDefault" class="btn btn_success btn_1">alert弹窗（默认）</button>
+    <button id="alerSuccess" class="btn btn_success btn_1">alert弹窗（成功）</button>
+    <button id="alertError" class="btn btn_success btn_1">alert弹窗（失败）</button>
+    <button id="promptPrompt" class="btn btn_success btn_1">提示弹窗（默认）</button>
+    <button id="promptSuccess" class="btn btn_success btn_1">提示弹窗（成功）</button>
+    <button id="loading" class="btn btn_success btn_1">加载中</button>
+    <button id="loadingFinish" class="btn btn_success btn_1">加载完成</button>
+    <script>
+//        SM.dialogConfig = {style:'cell', theme:'default'};     //配置弹窗，设置为手机模式，皮肤为默认类型（默认状态）
+        SM.dialogConfig = {style:'pc', theme:'default'};       //配置弹窗，设置为pc模式，皮肤为默认类型
+
+SM.alert('操作成功', 'success');
+        SM('#confirmDefault').click(function () {
+            SM.confirm('问题内容', function (result) {
+                if(result){
+                    console.log('按了确定')
+                }else{
+                    console.log('按了取消')
+                }
+            }, 'default');
+        });
+        SM('#confirmModal').click(function () {
+            SM.confirm('是否退出登录', function (result) {
+                if(result){
+                    console.log('按了确定')
+                }else{
+                    console.log('按了取消')
+                }
+            }, 'modal');
+        });
+        SM('#alertDefault').click(function () {
+            SM.alert('内容');
+        });
+        SM('#alerSuccess').click(function () {
+            SM.alert('操作成功', 'success');
+        });
+        SM('#alertError').click(function () {
+            SM.alert('操作失败', 'error');
+        });
+        SM('#promptPrompt').click(function () {
+            SM.prompt('提示内容');
+        });
+        SM('#promptSuccess').click(function () {
+            SM.prompt('成功提示');
+        });
+        SM('#loading').click(function () {
+            SM.loading('加载中...');
+        });
+        SM('#loadingFinish').click(function () {
+            SM.loading(true);
+        });
+        /* ------------------------------------------询问弹窗------------------------------------------ */
+        /*SM.confirm({
+            title:'询问提示',
+            content:'问题内容',
+            callback: function (result) {
+                if(result){
+                    console.log('按了确定')
+                }else{
+                    console.log('按了取消')
+                }
+            },
+            dialog:'modal',       //默认无状态modal（modal询问弹窗），包括default、modal
+            style:'cell'        //手机端，默认为手机端
+        });*/
+        /* 简写 */
+        /*SM.confirm('问题内容', function (result) {
+            if(result){
+                console.log('按了确定')
+            }else{
+                console.log('按了取消')
+            }
+        }, 'modal');*/
+        /* ------------------------------------------普通弹窗------------------------------------------ */
+        /*SM.alert({
+            title:'提示',
+            content:'问题内容',
+            callback: function () {
+                console.log('按了确定')
+            },
+            type:'success',     //默认无状态default（普通弹窗），包括default、prompt、success、error、warning、question
+            dialog:'',
+            style:'cell'        //手机端，默认为手机端
+        });*/
+        /* 简写 */
+        /*SM.alert('问题内容', function(){}, 'success');
+        SM.alert('问题内容', 'success');*/
+        /* ------------------------------------------提示弹窗------------------------------------------ */
+        /*SM.prompt({
+            content:'提示内容',
+            callback: function () {
+                alert()
+            },
+            type:'prompt',      //默认为prompt的icon，包括prompt、success、warning、error、question
+            style:'cell'        //手机端，默认为手机端
+        });
+        /!* 简写 *!/
+        SM.prompt('提示内容');
+
+
+        /!* ------------------------------------------ 加载中 ------------------------------------------ *!/
+        SM.loading({
+            content:'加载中...',                //默认为  玩命加载中...，注意内容尽量在10个字符以内
+            style:'cell'                        //手机端，默认为手机端
+        });
+        setTimeout(function () {
+            SM.loading(true);                   //传入true，将会关闭加载中
+        }, 1000);
+        /!* 简写 *!/
+        SM.loading('加载中...');
+        SM.loading();*/
+    </script>
+</body>
+</html>

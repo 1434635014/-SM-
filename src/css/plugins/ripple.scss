@@ -1,0 +1,41 @@
+.ripple-container-white {  }
+.ripple-container-white .ripple{
+    background-color: rgba(255,255,255,0.4);
+    -webkit-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    -o-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+}
+.ripple-container-green {  }
+.ripple-container-green .ripple{
+    background-color: rgba(31, 255, 142, 0.4);
+    -webkit-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    -o-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+}
+.ripple-container-gray {  }
+.ripple-container-gray .ripple{
+    background-color: rgba(197, 197, 197, 0.4);
+    -webkit-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    -o-animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+    animation:ripple 2s forwards cubic-bezier(0, 0, 0.2, 1);
+}
+@keyframes ripple {
+    0% {
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+    80% {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+    }
+}

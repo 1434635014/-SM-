@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookie</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <script>
+        /**
+         * y：年
+         * M：月
+         * d：天
+         * h：小时
+         * m：分钟
+         * s：秒
+         * 默认为毫秒
+         */
+        SM.setCookie('test_type', '1', '1d');           //设置cookie为test_type，值为1，设置的过期时间为1天
+        SM.setCookie('test_type', '2', 10000);          //设置cookie为test_type，值为1，设置的过期时间为10000毫秒
+        console.log(SM.getCookie('test_type'));         //获取cookie为test_type的值
+        SM.setCookie('test_type');                      //如果不设置值，将会清空cookie值
+        console.log(SM.getCookie('test_type'));         //如果值为空，将返回undefined
+    </script>
+</body>
+</html>

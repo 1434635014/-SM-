@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <select id="year">
+        <option value="0">--请选择--</option>
+    </select>
+    <select id="select">
+        <option value="0">--请选择--</option>
+    </select>
+
+
+    <script>
+        var options = [2015,2016,2017,2018,2019,2020];
+        var options1 = [
+            {
+                text:'问题1',
+                value:'答案：爱的无法人为规范'
+            },{
+                text:'问题2',
+                value:'答案：afesfwefgw'
+            },{
+                text:'问题3',
+                value:'答案：afesfwe阿斯达人情味若缺乏高fgw'
+            }
+        ];
+
+        SM.bindSelect({
+            id:'year',
+            options:options,
+            empty:true              //是否清空内容
+        });
+        SM.bindSelect({
+            id:'select',
+            options:options1
+        })
+    </script>
+</body>
+</html>

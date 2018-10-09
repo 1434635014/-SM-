@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        html,body{width: 100%; height: 100%}
+        header{
+            width: 100%;
+            min-width: 1200px;
+            height: 50px;
+            border: solid 1px black;
+            box-sizing: border-box;
+        }
+        .box {
+            width: 100%;
+            min-width: 1200px;
+            display: flex;
+            height: calc(100% - 50px);
+        }
+
+        .sidebar {
+            width: 200px;
+            height: 100%;
+            border: solid 1px black;
+            box-sizing: border-box;
+        }
+
+        .content {
+            width: calc(100% - 200px);
+            min-width: 1000px;
+            height: 100%;
+            border: solid 1px black;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        setTimeout(function () {
+            SM('#iframe').attr('src','http://m.cdiwinner.com/TwitterPcHtml/view/createTweeter.html');
+        },5000)
+    </script>
+</head>
+<body>
+    <header>高50px，宽100%</header>
+    <div class="box">
+        <div class="sidebar">
+            宽200px，高自适应
+        </div>
+        <div class="content">
+            根据窗口大小自适应
+            <Iframe id="iframe" src="http://m.cdiwinner.com/TwitterPcHtml/view/index.html" width="100%" height="100%" scrolling="[OPTION]" frameborder="x">
+
+            </iframe>
+        </div>
+    </div>
+<script>
+    SM.loading()
+</script>
+</body>
+</html>

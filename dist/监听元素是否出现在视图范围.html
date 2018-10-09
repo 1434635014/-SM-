@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>监听元素是否出现在视图范围</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        #scrollEle{
+            width: 80%; height: 500px; border: 1px solid #ed2c3e; margin: 0 auto; overflow-y: scroll
+        }
+        #block1{
+            width: 40px; height: 40px; background: #FFFFFF; position: absolute; bottom: 0;
+        }
+        #block2{
+            width: 40px; height: 40px; background: #be87ff; position: absolute; right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollEle">
+        <div style="width: 1000px; height: 100px; background-color: #b4d8e6; position: relative">
+            <div id="block2"></div>
+        </div>
+        <div style="width: 100%; height: 1000px; background: linear-gradient(to bottom, #f0ad4e, #808080, #0a6aa1); position: relative;">
+            <div id="block1"></div>
+        </div>
+    </div>
+    <script>
+        var scrollEle = SM.getEle('#scrollEle');
+        var viewEle = scrollEle;
+        SM.addEvent(scrollEle, 'scroll', function(){
+            listenerFun();
+        });
+        listenerFun();
+        function listenerFun() {
+            if(SM.appear(scrollEle, SM.getEle('#block1'), viewEle)){
+                console.log('方块1出现到视图');
+            }
+            if(SM.appear(scrollEle, SM.getEle('#block2'), viewEle)){
+                console.log('方块2出现到视图');
+            }
+        }
+    </script>
+</body>
+</html>

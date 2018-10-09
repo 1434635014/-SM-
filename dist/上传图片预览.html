@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Title</title>
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <div id="pubImgBtn" style="width: 250px; height: 250px; border: 1px solid #dd514c;cursor: pointer; margin-top: 50px; margin-left: 50px;">
+        <img id="img" src="" class="s_re_all_center" style="position: relative; max-width: 100%; max-height: 100%">
+    </div>
+    <input type="file" id="pubImg" class="hidden">
+
+    <script>
+        SM('#pubImgBtn').click(function () {
+            SM('#pubImg').click();
+        });
+        SM('#pubImg').change(function (e) {
+            e = e || window.e;
+            var fileEle = e.target;
+            var file = null;
+            if(fileEle.files){
+                file = fileEle.files[0];
+            }else{
+                fileEle.select();
+                fileEle.blur();
+                var path = document.selection.createRange().text;
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                file = fso.GetFile(path);
+                alert(file)
+            }
+            var src = SM.getfileUrl(file);
+
+
+            SM('#img').attr('src',src)
+        });
+    </script>
+</body>
+</html>

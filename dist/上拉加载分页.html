@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        body{
+            font-family: 微软雅黑;
+            -webkit-tap-highlight-color:rgba(255,0,0,0);
+        }
+        ::-webkit-scrollbar {width: 0;height: 0;}
+        ul{
+            width: 100%;
+            padding: 0;
+            list-style: none;
+        }
+        ul > li{
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            padding: 0;
+        }
+        ul>li:nth-child(5n-4){
+            background-color: #ebc4ee;
+        }
+        ul>li:nth-child(5n-3){
+            background-color: #7ae1ee;
+        }
+        ul>li:nth-child(5n-2){
+            background-color: #ee696e;
+        }
+        ul>li:nth-child(5n-1){
+            background-color: #4dee74;
+        }
+        ul>li:nth-child(5n){
+            background-color: #eee410;
+        }
+
+        #listOut1, #listOut2{
+            width: 300px;
+            height: 500px;
+            margin: 10px;
+            border:1px solid #00a1a5;
+            overflow-y: scroll;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="listOut1">
+        <ul class="list" id="ul"></ul>
+    </div>
+
+    <!-- listOut2表示列表滚动监听的最外层 -->
+    <div id="listOut2">
+        <!-- list表示列表部分 -->
+        <ul class="list">
+            <!-- list_li可指定，也可不指定，表示列表的内容监听部分 -->
+            <li v-for="item in list" class="list_li">{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="js/vue.min.js"></script>
+    <script>
+        //-----------------------------------------------使用示例，上述为插件代码--------------------------------------------------
+        function begin() {
+            var i = 1;              //第一页
+            SM.dragLoader({
+                id: 'listOut1',
+                tag: 'li',          //指定列表使用的li布局还是div布局，默认为'li'
+                size: 15,
+                isPrompt:true,                         //当数据显示完后是否显示提示文字，默认true
+                isPromptNull:true,                      //是否在没有数据的状态下提示文字，默认true
+                prompt:'没有更多数据了',                  //指定没有更多内容时出现的提示文字，默认为，'没有更多数据了'
+                promptNull:'暂无数据',                   //指定没有内容时出现的提示文字，默认为，'没有更多数据了'
+                isSearchAll:true,                      //是否查询列表数据为全部项，默认为false，默认查询class为的元素list_li
+                isDeleteAll:true,                       //是否移除列表数据为全部项，默认为false，默认移除class为的元素list_li
+                respond:true,                           //是否做响应（适配）
+                callback: function (index) {            //该方法模拟ajax请求
+                    console.log('这一页'+index);
+                    //网页下拉到底部触发这个方法
+                    if(i <= 2){                     //只拉取三页数据
+                        i++;
+                        setTimeout(function () {
+                            addElement('ul');
+                            SM.dragLoader('listOut1', function (isLastPage) { if(isLastPage) console.log('列表数据加载完毕') });
+                        },1200);
+                    }else{
+
+                        setTimeout(function () {
+                            SM.dragLoader('listOut1', function (isLastPage) { if(isLastPage) console.log('列表数据加载完毕') });
+                        },1200);
+                    }
+                }
+            });
+        }
+        begin();
+        setTimeout(function () {
+            SM.dragLoader('listOut1', true);      //清空数据后的初始化
+
+            setTimeout(function () {
+                begin();
+            }, 1200)
+        }, 6000);
+        function addElement(ul){
+            var list = document.getElementById(ul);
+            for(var s = 0; s<15; s++){
+                var li = document.createElement('li');
+                li.innerText = '';
+                list.appendChild(li);
+            };
+        }
+
+        //---------------------------------------与Vue配合使用------------------------------------------
+        var vm = new Vue({
+            el:'#listOut2',
+            data:{
+                list:[]
+            }
+        });
+        beginB();
+        function beginB() {
+            var i = 1;              //第一页
+            SM.dragLoader({
+                id: 'listOut2',
+                size: 15,
+                isPrompt:false,                     //当数据显示完后是否显示提示文字
+                callback: function (index) {        //该方法模拟ajax请求
+                    console.log('这一页'+index);
+                    //网页下拉到底部触发这个方法
+                    if(i <= 3){                     //只拉取三页数据
+                        i++;
+                        setTimeout(function () {
+                            addList();
+                            setTimeout(function () {
+                                SM.dragLoader('listOut2')
+                            },10);                  //等待渲染完成后执行这个方法
+                        },1200);
+                    }else{
+                        setTimeout(function () {
+                            SM.dragLoader('listOut2');
+                        },1200);
+                    }
+                }
+            });
+        }
+        function addList() {
+            for(var s = 0; s<15; s++){
+                var text = s+'文本'+s;
+                vm.list.push(text);
+            };
+        };
+
+
+        //---------------------------------------使用方法说明------------------------------------------
+        /*SM.dragLoader({
+            id: 'ul',           //要绑定的列表id
+            size: 8,            //要设置分页一页拉去的数据条数
+            isPrompt:true       //当数据显示完后是否显示提示文字
+            callback: function(index){          //这里为请求数据的方法，将返回第一个当前页码参数，从第一页开始，该方法会在第一次自动执行
+                $.ajax({
+                    //...
+                }).success(function () {
+                    //...
+
+                    SM.dragLoader('ul', callback);        //无论成功或失败，都需要在最后调调用一次该方法，callback为回调，如果加载到最后一页，会返回第一个为true的参数
+                }).error(function () {
+
+
+                    SM.dragLoader('ul', callback);        //无论成功或失败，都需要在最后调用一次该方法，callback为回调，如果加载到最后一页，会返回第一个为true的参数
+                })
+            }
+        });*/
+
+        //如果数据被刷新，重新获取，请先调用方法传入参数 SM.setLoading('ul', true)来清空数据;
+
+    </script>
+
+
+</body>
+</html>

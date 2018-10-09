@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js按钮水纹波动特效</title>
+    <script src="js/SnowMoon.test.js"></script>
+    <style>
+        button {
+            background-color: #3fba93;
+            color: white;
+            padding: 10px 20px;
+            border:0;
+            font-size: 14px;
+            cursor: pointer;
+            -webkit-transition: background-color .5s;
+            -moz-transition: background-color .5s;
+            -ms-transition: background-color .5s;
+            -o-transition: background-color .5s;
+            transition: background-color .5s;
+        }
+        /*button:hover{*/
+            /*background-color: #3aaa86;*/
+        /*}*/
+        button:active{
+            background-color: #3aaa86;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="margin:100px auto 1px auto; width:700px;">
+    <br/>
+    <div class="content">
+        <!-- we just added data-ripple attribute -->
+        <button data-ripple-green>
+            Demo button 1
+        </button>
+        <button data-ripple-white>
+            Demo button 2
+        </button>
+        <button data-ripple-green>
+            Demo button 3
+        </button>
+        <button data-ripple-white>
+            Demo button 4
+        </button>
+        <button data-ripple-green>
+            Demo button 5
+        </button>
+    </div>
+</div>
+<div class="container" style="margin:100px auto 1px auto; width:700px;">
+    <br/>
+    <div class="content">
+        <!-- we just added data-ripple attribute -->
+        <button data-ripple-green>
+            Demo button 1
+        </button>
+        <button data-ripple-white>
+            Demo button 2
+        </button>
+        <button data-ripple-green>
+            Demo button 3
+        </button>
+        <button data-ripple-white>
+            Demo button 4
+        </button>
+        <button data-ripple-green>
+            Demo button 5
+        </button>
+    </div>
+</div>
+<div class="container" style="margin:100px auto 1px auto; width:700px;">
+    <br/>
+    <div class="content">
+        <!-- we just added data-ripple attribute -->
+        <button data-ripple-green>
+            Demo button 1
+        </button>
+        <button data-ripple-white>
+            Demo button 2
+        </button>
+        <button data-ripple-green>
+            Demo button 3
+        </button>
+        <button data-ripple-white>
+            Demo button 4
+        </button>
+        <button data-ripple-green>
+            Demo button 5
+        </button>
+    </div>
+</div>
+<div class="container" style="margin:100px auto 1px auto; width:700px;">
+    <br/>
+    <div class="content">
+        <!-- we just added data-ripple attribute -->
+        <button data-ripple-green>
+            Demo button 1
+        </button>
+        <button data-ripple-white>
+            Demo button 2
+        </button>
+        <button data-ripple-green>
+            Demo button 3
+        </button>
+        <button data-ripple-white>
+            Demo button 4
+        </button>
+        <button data-ripple-green>
+            Demo button 5
+        </button>
+    </div>
+</div>
+<div class="container" style="margin:100px auto 1px auto; width:700px;">
+    <br/>
+    <div class="content">
+        <!-- we just added data-ripple attribute -->
+        <button data-ripple-green>
+            Demo button 1
+        </button>
+        <button data-ripple-white>
+            Demo button 2
+        </button>
+        <button data-ripple-green>
+            Demo button 3
+        </button>
+        <button data-ripple-white>
+            Demo button 4
+        </button>
+        <button data-ripple-green>
+            Demo button 5
+        </button>
+    </div>
+</div>
+    <div class="container" style="margin:100px auto 1px auto; width:700px;">
+        <br/>
+        <div class="content">
+            <!-- we just added data-ripple attribute -->
+            <button data-ripple-green>
+                Demo button 1
+            </button>
+            <button data-ripple-white>
+                Demo button 2
+            </button>
+            <button data-ripple-green>
+                Demo button 3
+            </button>
+            <button data-ripple-white>
+                Demo button 4
+            </button>
+            <button data-ripple-green>
+                Demo button 5
+            </button>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        // just add effect to elements
+        SM.ripple(document.querySelectorAll("[data-ripple-green]"), 'green')
+        SM.ripple(document.querySelectorAll("[data-ripple-white]"), 'white')
+    </script>
+</body>
+</html>

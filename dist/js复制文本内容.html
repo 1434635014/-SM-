@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js复制文本内容</title>
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <input id="input" class="input" value="文本框内容">
+    <button id="btn" class="btn btn_success">点击赋值文本框的内容</button>
+    <script>
+        SM('#btn').click(function () {
+            SM.copyInput('input');          //复制文本框内容，参数为文本框id
+        });
+    </script>
+</body>
+</html>

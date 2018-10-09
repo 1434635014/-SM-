@@ -1,0 +1,76 @@
+
+/*----------------------------------------- paging  -------------------------------------*/
+.paging{
+  float: right;
+  overflow: hidden;
+}
+.paging > div{
+  float: left;
+}
+.paging > .page_btn > div,
+.paging > .paging_skip > div{
+  float: left;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.paging.default > div,
+.paging.default > .page_btn > div.p_btn > i{
+  height: 26px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 26px;
+}
+.paging.default > .paging_skip > div.skip_title{
+  width: 40px;
+  height: 100%;
+  color: #000000;
+  cursor: default;
+}
+.paging.default > .page_btn > div.p_btn,
+.paging.default > .paging_skip > div.skip_input > input.page_num{
+  min-width: 26px;
+  height: 100%;
+  color: #000000;
+  background-color: rgb(241,241,241);
+}
+.paging.default > .page_btn > div.p_btn:hover{
+  background-color: #e0e0e0;
+}
+.paging.default > .page_btn > div.p_btn.current{
+  cursor: default;
+  color: #FFFFFF;
+  background-color: #20a5cf;
+}
+.paging.default > .page_btn > div.p_btn.ell{
+  cursor: default;
+  background-color: transparent;
+}
+.paging.default > .page_btn > div.p_btn.ell:hover{
+  background-color: transparent;
+}
+.paging.default > .paging_skip > div.skip_input > input.page_num{
+  width: 26px;
+  text-align: center;
+  border: 1px solid #bdbdbd;
+  background-color: transparent;
+}
+.paging.default > .paging_skip .skip_btn,
+.paging.default > .paging_skip > div.skip_input{
+  height: 100%;
+  line-height: normal;
+}
+.paging.default > .paging_skip .skip_btn{
+  width: 70px;
+  line-height: normal;
+}
+.paging.default > .paging_skip .skip_btn > button.btn{
+  width: 100%;
+  height: 100%;
+  line-height: 26px;
+  color: #FFFFFF;
+  background-color: #23b7e5;
+}
+.paging.default > .paging_skip .skip_btn > button.btn:hover{
+  background-color: #20a5cf;
+}

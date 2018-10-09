@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易日期插件</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        .date_picker{
+            width: auto;
+            display: inline-block;
+            position: relative;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="date_picker">
+        <input id="date" type="text" class="input">
+    </div>
+
+
+    <script>
+        SM.datePicker(
+            {
+                id: 'date',
+                callback:function (s) {
+                    alert(s)
+                },
+                defaultDate:'2016-1-1'
+            }
+        )
+    </script>
+</body>
+</html>

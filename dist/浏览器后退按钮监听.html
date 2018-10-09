@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+</head>
+<body>
+    <script>
+        SM.listenerBack(function (a, b) {
+            //点击浏览器返回按钮后触发的事件
+            alert(a +'：'+ b);
+            window.location.href = 'http://www.baidu.com';
+        }, ['ddd', 'sss']);
+    </script>
+</body>
+</html>

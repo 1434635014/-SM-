@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        #listOut{
+            width: 300px;
+            height: 500px;
+            border: 1px solid #f0ad4e;
+            margin: 10px auto;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+        #listOut .list{
+            width: 100%;
+        }
+        #listOut .list > div{      /* 在给列表列进行添加样式时，如果内容包含图片，注意使用not(.loading_img)，如果要支持ie8，可不用使用 */
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            margin-top: 5px;
+            overflow-y: hidden;
+            overflow-x: scroll;
+        }
+        #listOut .list > div:first-child{
+            margin-top: 0;
+        }
+        #listOut .list > div > div{
+            width:2100px;
+        }
+        #listOut .list > div > div > img{
+            margin-left: 5px;
+            object-fit: cover;
+            opacity: 0;
+            filter:Alpha(opacity=0);
+        }
+        #listOut .list > div> div > img:first-child{
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="listOut">
+        <div class="list"></div>
+    </div>
+    <script>
+        //先给整个列表绑定一个懒加载，监听范围为自身范围
+        SM.lazyLoad({
+            id:'listOut',
+            viewId:'listOut',
+            queryId:'listOut',
+            animation:'fadeIn',
+            delay:200
+        });
+
+        var o = 0;
+        SM.dragLoader({
+            id:'listOut',
+            size:20,
+            tag:'div',
+            isPrompt:true,
+            isSearchAll:true,                      //是否查询列表数据为全部项，默认为false，默认查询class为的元素list_li
+            isDeleteAll:true,                       //是否移除列表数据为全部项，默认为false，默认移除class为的元素list_li
+            callback:function (index) {
+                console.log('开始加载第'+index+'页');
+                //网页下拉到底部触发这个方法
+                if(o <= 2){                     //只拉取三页数据
+                    o++;
+                    setTimeout(function () {
+                        var array = addElement();
+                        SM.dragLoader('listOut');
+                        //给li的横向滚动绑定懒加载，动态将每个列表项的id绑定懒加载
+                        array.forEach(function (v) {
+                            SM.lazyLoad({
+                                id:v,
+                                viewId:'listOut',
+                                parentId:'listOut',        //这里要指定父元素监听范围，为整个列表
+                                animation:'fadeIn',
+                                delay:200,
+                                imgCache:true           //因为是固定长度，所以做缓存
+                            });
+                        });
+                        if(o===1) SM.lazyLoad({id:'listOut'}, true);           //如果是第一页，进行一次手动懒加载
+
+
+                        console.log('第'+index+'页加载完毕...................');
+                    },1500);
+                }else{
+
+                    setTimeout(function () {
+                        SM.dragLoader('listOut');
+                        SM.lazyLoad({id:'listOut'}, false);                    //如果加载完毕，手动移除懒加载监听
+
+
+                        console.log('第'+index+'页加载完毕，这是最后一页...................');
+
+                    },1500);
+                }
+            }
+        });
+
+
+
+        var num = 0;
+        function addElement(){
+            var array = [];
+            var ul = SM('#listOut > .list');
+            for(var i = 0; i < 20; i++){
+                var divOut = SM.createEle('div');
+                var divIn = SM.createEle('div');
+                var id = 'liId' + num;
+
+                for(var j = 0; j < 20; j++){
+                    var img = SM.createEle('img');
+                    img.setAttribute('data-src', 'exp/juren.jpg');
+                    img.setAttribute('width', '100px');
+                    img.setAttribute('height', '100px');
+                    divIn.appendChild(img);
+                }
+                divOut.setAttribute('id',id);
+                divOut.appendChild(divIn);
+                ul.append(divOut);
+
+                array.push(id);
+                num++;
+            }
+            return array;
+        }
+
+
+    </script>
+</body>
+</html>

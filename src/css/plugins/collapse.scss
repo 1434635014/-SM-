@@ -1,0 +1,15 @@
+/*------------------------------------- menu  ----------------------------------------*/
+ul.collapse{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+ul.collapse > li{
+    width: 100%;
+}
+ul.collapse > li a{
+    text-decoration: none;
+}
+ul.collapse ul.collapse{
+    display: none;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>触摸内容滑动轮播</title>
+    <script src="js/SnowMoon.all.js"></script>
+    <style>
+        .sm_swiper{
+            margin: 0 auto;
+        }
+        .sm_swiper .swiper_content{
+            height: 120px;
+            background-color: #178fa1;
+        }
+        .sm_swiper .swiper_content .swiper_out .swiper_in .swiper_slide{
+            width: 90px;
+            background-color: #5da173;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sm_swiper" id="swiper">
+        <div class="swiper_content">
+            <!-- 轮播内容 -->
+            <div class="swiper_out">
+                <div class="swiper_in">
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                    <div class="swiper_slide"></div>
+                </div>
+            </div>
+            <!-- 轮播分页器（上下翻页） -->
+            <div class="swiper_prev"><i class="icon icon_prev s_ab_a"></i></div>
+            <div class="swiper_next"><i class="icon icon_next s_ab_a"></i></div>
+        </div>
+        <!-- 轮播分页图标（页码） -->
+        <div class="swiper_paging">
+            <span class="swiper_paging_in">
+                <a class="swiper_paging_bar" data-index="0"></a>
+                <a class="swiper_paging_bar" data-index="1"></a>
+                <a class="swiper_paging_bar" data-index="2"></a>
+                <a class="swiper_paging_bar" data-index="3"></a>
+            </span>
+        </div>
+    </div>
+    <script>
+        //-----------------------------使用该组件，需要和monitor组件配合使用（如果关闭触摸滚动的话除外）------------------------------------
+        SM.swiper({
+            id:'swiper',        //轮播的id
+            size:3,             //每次轮播的个数，默认为1
+            left:15,            //轮播之间的间距
+            index:1,            //轮播的默认页码，默认为0，第一页
+            autoPlay:true,      //是否自动轮播，默认为false，不开启
+            delay:3000,         //轮播间隔时长，默认5秒，autoPlay设置为true的情况下，该属性才生效
+            isOpenTouch:true,   //是否开启触摸滚动，默认开启
+        });
+    </script>
+</body>
+</html>
